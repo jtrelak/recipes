@@ -1,0 +1,24 @@
+# mounting FAT/FAT32 as user 1000
+sudo mount -t vfat -o gid=1000,uid=1000 /dev/sda1 /mnt/sda1
+
+# wifi
+nmcli dev wifi
+nmcli device wifi connect APname
+sudo systemctl restart NetworkManager
+nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | while read line; do nmcli con delete uuid $line; done
+
+# xrandr
+xrandr --auto
+xrandr --output <DP-1> --left-of <LVDS-1>
+
+# temp
+/sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_crit
+
+# i3 brightness up/down
+# -- up
+echo $(($(cat /sys/class/backlight/intel_backlight/brightness)+2000)) > /sys/class/backlight/intel_backlight/brightness
+killall -USR1 i3status
+# -- down
+echo $(($(cat /sys/class/backlight/intel_backlight/brightness)-2000)) > /sys/class/backlight/intel_backlight/brightness
+killall -USR1 i3status
+
