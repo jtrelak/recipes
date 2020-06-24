@@ -10,6 +10,7 @@ nmcli --fields UUID,TIMESTAMP-REAL con show | grep never | awk '{print $1}' | wh
 # xrandr
 xrandr --auto
 xrandr --output <DP-1> --left-of <LVDS-1>
+xrandr --output eDP-1 --mode 1920x1080
 
 # temp
 /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_crit
