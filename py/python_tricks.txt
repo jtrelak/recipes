@@ -1,0 +1,3 @@
+in debugger
+pdb.set_trace = lambda: None
+and then continue. No more breakpoints!
